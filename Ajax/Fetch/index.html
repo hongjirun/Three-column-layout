@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //用fetchApi进行请求数据,一般返回的响应头会是一个Promise
+    fetch("https://study.duyiedu.com/api/herolist").then(res=>{
+      console.log(res);
+      // 返回的响应头数据中有json()和text()两个存储着响应体的信息,分别为对象和文本格式,也是一个Promise
+      res.json().then(res=>{
+        console.log(res);
+      })
+    })
+  </script>
+</body>
+</html>

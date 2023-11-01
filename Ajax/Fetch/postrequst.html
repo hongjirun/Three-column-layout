@@ -1,0 +1,42 @@
+<!-- fetch的post请求 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="user">
+  <br>
+  <input type="password" id="password">
+  <br>
+  <button>登录</button>
+
+  <script>
+    // 获取dom节点
+    const user=document.querySelector("#user");
+    const password=document.querySelector("#password");
+    const botton=document.querySelector("button");
+    
+    botton.onclick=async function(){
+      // 获取输入的账号密码
+      const userValue = user.value;
+      const passwordValue = password.value;
+      // 账号密码存为对象
+      let obj = {
+        userValue,
+        passwordValue
+      }
+      const res=await fetch("https://study.duyiedu.com/api/user/login",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(obj)
+      })
+      const body=await res.json();
+      console.log(body);
+    }
+  </script>
+</body>
+</html>
